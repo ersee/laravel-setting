@@ -1,0 +1,47 @@
+{
+    "name": "ersee/laravel-setting",
+    "description": "Global setting module for Laravel application.",
+    "type": "library",
+    "keywords": ["laravel", "setting", "laravel-setting"],
+    "homepage": "https://github.com/ersee/laravel-setting",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ersee",
+            "email": "ltgssmtd@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "laravel/framework": "~6.0||~7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ersee\\LaravelSetting\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ersee\\LaravelSetting\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ersee\\LaravelSetting\\Providers\\SettingServiceProvider"
+            ],
+            "aliases": {
+                "Setting": "Ersee\\LaravelSetting\\Facades\\Setting"
+            }
+        }
+    },
+    "scripts": {
+        "fixer": "vendor/bin/php-cs-fixer fix -vvv"
+    }
+}
