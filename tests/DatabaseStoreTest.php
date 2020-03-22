@@ -65,6 +65,17 @@ class DatabaseStoreTest extends TestCase
         $this->assertFalse(\Setting::has('ka'));
         $this->assertFalse(\Setting::forget('ka'));
 
+        // 自增/自减
+        \Setting::set('kid', 100);
+        \Setting::increment('kid');
+        $this->assertSame(101, \Setting::get('kid'));
+        \Setting::increment('kid', 10);
+        $this->assertSame(111, \Setting::get('kid'));
+        \Setting::decrement('kid');
+        $this->assertSame(110, \Setting::get('kid'));
+        \Setting::decrement('kid', 10);
+        $this->assertSame(100, \Setting::get('kid'));
+
         // 判断字符串
         \Setting::set('kts', 'vts');
         $this->assertIsString(\Setting::get('kts'));
@@ -107,6 +118,17 @@ class DatabaseStoreTest extends TestCase
         $this->assertTrue(setting()->forget('ka'));
         $this->assertFalse(setting()->has('ka'));
         $this->assertFalse(setting()->forget('ka'));
+
+        // 自增/自减
+        setting(['kid' => 100]);
+        setting()->increment('kid');
+        $this->assertSame(101, setting('kid'));
+        setting()->increment('kid', 10);
+        $this->assertSame(111, setting('kid'));
+        setting()->decrement('kid');
+        $this->assertSame(110, setting('kid'));
+        setting()->decrement('kid', 10);
+        $this->assertSame(100, setting('kid'));
 
         // 判断字符串
         setting(['kts' => 'vts']);

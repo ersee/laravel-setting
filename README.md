@@ -21,41 +21,78 @@ php artisan migrate
 
 ## Usage
 
+- ##### Facade
+
 ```bash
 // get all
 \Setting::all(); // array
-setting()->all();
 
 // check exists
 \Setting::has('key'); // bool
-setting()->has('key');
 
 // get
 \Setting::get('key'); // default null
-setting('key');
-\Setting::get('key', 'default');
-setting('key', 'default');
+\Setting::get('key', 'default'); 
 \Setting::get(['key1', 'key2']); // default null
-setting()->get(['key1', 'key2']);
 \Setting::get(['key1' => 'default1', 'key2' => 'default2']);
-setting()->get(['key1' => 'default1', 'key2' => 'default2']);
 
 // set
 \Setting::set('key', 'value');
-setting(['key' => 'value']);
 \Setting::set(['key1' => 'value1', 'key2' => 'value2']);
-setting(['key1' => 'value1', 'key2' => 'value2']);
+
+// set datatype
+\Setting::set('key', 100); // int
+\Setting::set('key', 100.123); // float
+\Setting::set('key', 'string'); // string
+\Setting::set('key', true); // bool
+\Setting::set('key', ['ka' => 'va', 'kb' => 'vb']); // array
+\Setting::set('key', new \DateTime()); // object
 
 // increment or decrement
-\Setting::increment('key', 1);
-setting()->increment('key', 1);
-\Setting::decrement('key', 1);
-setting()->decrement('key', 1);
+\Setting::increment('key');
+\Setting::increment('key', 100);
+\Setting::decrement('key');
+\Setting::decrement('key', 100);
 
 // forget
 \Setting::forget('key');
-setting()->forget('key');
 \Setting::forget(['key1', 'key2']);
+```
+
+- ##### Helper
+
+```bash
+// get all
+setting()->all(); // array
+
+// check exists
+setting()->has('key'); // bool
+
+// get
+setting('key'); // default null
+setting('key', 'default'); 
+setting()->get(['key1', 'key2']); // default null
+setting()->get(['key1' => 'default1', 'key2' => 'default2']);
+
+// set
+setting(['key1' => 'value1', 'key2' => 'value2']);
+
+// set datatype
+setting(['key' => 100]); // int
+setting(['key' => 100.123]); // float
+setting(['key' => 'string']); // string
+setting(['key' => true]); // bool
+setting(['key' => ['ka' => 'va', 'kb' => 'vb']]); // array
+setting(['key' => new \DateTime()]); // object
+
+// increment or decrement
+setting()->increment('key');
+setting()->increment('key', 100);
+setting()->decrement('key');
+setting()->decrement('key', 100);
+
+// forget
+setting()->forget('key');
 setting()->forget(['key1', 'key2']);
 ```
 
