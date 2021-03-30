@@ -1,10 +1,12 @@
 {
     "name": "ersee/laravel-setting",
     "description": "Global setting module for Laravel application.",
-    "type": "library",
     "keywords": ["laravel", "setting", "laravel-setting"],
-    "homepage": "https://github.com/ersee/laravel-setting",
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/ersee/laravel-setting/issues",
+        "source": "https://github.com/ersee/laravel-setting"
+    },
     "authors": [
         {
             "name": "ersee",
@@ -12,12 +14,12 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "laravel/framework": "~6.0||~7.0"
+        "php": "^7.2|^8.0",
+        "laravel/framework": "^6.0|^7.0|^8.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "orchestra/testbench": "^4.0||^5.0"
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "orchestra/testbench": "^4.0|^5.0|^6.0"
     },
     "autoload": {
         "psr-4": {
@@ -32,6 +34,11 @@
             "Ersee\\LaravelSetting\\Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "check-style": "php-cs-fixer fix --using-cache=no --diff --config=.php_cs.dist --dry-run --ansi",
+        "fixer-style": "php-cs-fixer fix --using-cache=no --config=.php_cs.dist --ansi",
+        "test": "vendor/bin/phpunit --colors=always"
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -42,8 +49,9 @@
             }
         }
     },
-    "scripts": {
-        "fixer": "vendor/bin/php-cs-fixer fix -vvv",
-        "test": "vendor/bin/phpunit --debug"
-    }
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
